@@ -1,52 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Dice Roller 🎲</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Dice Roller</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body onload="rollDice()">
-
-  <div class="container">
+  <main class="container">
     <h1>🎲 Web Dice Roller</h1>
-    <p class="instructions">
-      Click "Roll Dice" or press Enter to roll 5 six-sided dice.  
-      Each field below shows the result of a random roll!
-    </p>
 
-    <form id="diceForm" onsubmit="rollDice(); return false;">
-      <div class="dice-grid">
-        <div>
-          <label for="die1">Die 1:</label>
-          <input type="text" id="die1" readonly />
-        </div>
-        <div>
-          <label for="die2">Die 2:</label>
-          <input type="text" id="die2" readonly />
-        </div>
-        <div>
-          <label for="die3">Die 3:</label>
-          <input type="text" id="die3" readonly />
-        </div>
-        <div>
-          <label for="die4">Die 4:</label>
-          <input type="text" id="die4" readonly />
-        </div>
-        <div>
-          <label for="die5">Die 5:</label>
-          <input type="text" id="die5" readonly />
-        </div>
+    <section class="instructions">
+      <p>
+        This app simulates rolling five six-sided dice, similar to Yahtzee.  
+        Click the <strong>Roll Dice</strong> button or press <strong>Enter</strong> to roll again.
+      </p>
+    </section>
+
+    <section class="dice-area">
+      <div class="header-row">
+        <span>Die #</span>
+        <span>Value</span>
       </div>
+      <div id="diceContainer"></div>
+    </section>
 
-      <div class="result">
-        <label for="total">Total:</label>
-        <input type="text" id="total" readonly />
-      </div>
-
-      <button id="rollBtn" type="submit" autofocus>Roll Dice</button>
-    </form>
-  </div>
+    <button id="rollBtn" autofocus onclick="rollDice()">Roll Dice</button>
+  </main>
 
   <script src="script.js"></script>
 </body>

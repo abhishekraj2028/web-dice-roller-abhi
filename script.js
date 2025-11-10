@@ -1,11 +1,22 @@
+// Roll 5 dice when the page loads or button is clicked
 function rollDice() {
-  const diceValues = [];
-  for (let i = 1; i <= 5; i++) {
-    const roll = Math.floor(Math.random() * 6) + 1;
-    diceValues.push(roll);
-    document.getElementById(`die${i}`).value = roll;
+  const diceContainer = document.getElementById('diceContainer');
+  diceContainer.innerHTML = '';  // clear previous rolls
+  const numDice = 5;
+
+  for (let i = 1; i <= numDice; i++) {
+    const roll = Math.floor(Math.random() * 6) + 1; // random 1–6
+    const row = document.createElement('div');
+    row.className = 'die-row';
+    row.innerHTML = `<span>Die ${i}</span><span>${roll}</span>`;
+    diceContainer.appendChild(row);
   }
-  const total = diceValues.reduce((a, b) => a + b, 0);
-  document.getElementById("total").value = total;
-  document.getElementById("rollBtn").focus(); // autofocus for Enter key
+
+  // refocus button for Enter key use
+  document.getElementById('rollBtn').focus();
 }
+
+// Allow Enter key to trigger roll
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') rollDice();
+});
